@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueStar Tourism</title>
+    <link rel="stylesheet" href="../static/style.css">
+
+    <style>
+        body {
+            background-image: url('static/image/img2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position-y: 35%;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 30px;
+            margin-left: 60px;
+            padding: 15px;
+        }
+
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #f3f3f3;
+        }
+
+        li {
+        float: left;
+        }
+
+        li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+        background-color: #ddd;
+        }
+
+        li a.active {
+        color: white;
+        background-color: #04AA6D;
+        }
+
+        .registercontent{
+            margin: 50px auto;
+            height: 250px;
+            width: 600px;
+            background-color: #e6ffee; 
+            border-radius: 10px;
+        }
+
+        .registertop{
+            height: 60px;
+            width: 600px;
+            background-color: #009933; 
+            color: #ffffff;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .textbox{
+            padding: 10px 40px;
+            background-color: #009933; 
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="{{ url_for('userpackages') }}">PACKAGES</a></li>
+        <li><a href="{{ url_for('history') }}">MY BOOKINGS</a></li>
+        <li><a href="{{ url_for('logout') }}">LOGOUT</a></li>
+    </ul>
+
+    <h1>{{ data2 }}</h1>
+    {% for i in data%}
+    <div>
+        <h2>{{ i[0] }}</h2><br>
+        <p>{{ i[1] }}</p>
+    </div>
+    {% endfor %}
+
+    <div class="registercontent" align="center">
+        <div class="registertop">
+            <h1>PLEASE FILL THE FORM</h1>
+        </div></br></br>
+        <div class="registerbottom">
+        <form action="{{ url_for('booking')}}" method="post" autocomplete="off">
+        <div class="msg">{{ msg }}</div>
+        <input type="text" name="PackageID" placeholder="Enter Package ID" class="textbox" id="PackageID" value={{ data3 }} readonly>
+        <input type="text" name="Tickets" placeholder="Enter No of Tickets" class="textbox" id="Tickets" required></br></br>
+        <input type="submit" class="btn" value="SUBMIT AND PAY">
+        </form>
+    </div>
+
+
+</body>
+</html>

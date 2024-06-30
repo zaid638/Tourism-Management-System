@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueStar Tourism</title>
+    <link rel="stylesheet" href="../static/style.css">
+
+    <style>
+        body {
+            background-image: url('static/image/img2.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position-y: 35%;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-top: 30px;
+            margin-left: 510px;
+        }
+
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #f3f3f3;
+        }
+
+        li {
+        float: left;
+        }
+
+        li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+        background-color: #ddd;
+        }
+
+        li a.active {
+        color: white;
+        background-color: #04AA6D;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="/">HOME</a></li>
+        <li><a href="{{ url_for('packages') }}">PACKAGES</a></li>
+        <li><a href="{{ url_for('login') }}">LOGIN/REGISTER</a></li>
+    </ul>
+    <h1>WELCOME TO BLUESTAR TOURISM</h1>
+
+
+    {% for i in pkge%}
+    <div class="user-d2" style="background-color:#D9EEE1;">
+        <div class="user-img">
+            <img src="static/image/img1.jpg" alt="img1" height="150" width="150">
+        </div>
+        <div class="user-txt">
+            <h2>{{ i[1] }}</h2>
+            <p>Package ID : {{ i[0] }}</p>
+            <p>Places : {{ i[2][0] }}, {{ i[2][1] }}, {{ i[2][2] }}</p>
+            <p>No of Days : {{ i[3] }}</p>
+            <p>Price : {{ i[4] }}</p>
+        </div>
+        <div class="user-btn">
+            <button type="button"><a href="{{ url_for('login') }}">Click Me!</a></button>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</body>
+</html>

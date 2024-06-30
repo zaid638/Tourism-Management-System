@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueStar Tourism</title>
+    <link rel="stylesheet" href="../static/style.css">
+
+    <style>
+        body {
+            background-image: url('static/image/img2.jpg');
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-size: cover;
+            /* background-position-y: 35%; */
+            /* overflow-x: hidden; */
+        }
+
+        h1 {
+            margin-top: 50px;
+            margin-left: 500px;
+            font-weight: 800;
+            font-size: 4.5ch;
+            color: #ffffff;
+        }
+
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid #e7e7e7;
+        background-color: #f3f3f3;
+        }
+
+        li {
+        float: left;
+        }
+
+        li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+        background-color: #ddd;
+        }
+
+        li a.active {
+        color: white;
+        background-color: #04AA6D;
+        }
+
+        table{
+            margin-top: 50px;
+            margin-left: 300px;
+            margin-bottom: 100px;
+            background-color: rgb(127, 153, 255);
+        }
+
+        th, td{
+            padding: 15px;
+        }
+
+        .registercontent{
+            margin: 50px auto;
+            height: 450px;
+            width: 600px;
+            background-color: #e6ffee; 
+            border-radius: 10px;
+        }
+
+        .registertop{
+            height: 60px;
+            width: 600px;
+            background-color: #009933; 
+            color: #ffffff;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .textbox{
+            padding: 10px 40px;
+            background-color: #009933; 
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .btn {
+            padding: 10px 40px;
+            background-color: #009933; 
+            color: #FFFFFF;
+            font-style: oblique;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        .active, .btn:hover {
+            background-color: #303477;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="{{ url_for('manage_packages_add') }}">MANAGE PACKAGES</a></li>
+        <li><a href="{{ url_for('manage_bookings') }}">MANAGE BOOKINGS</a></li>
+        <li><a href="{{ url_for('manage_users') }}">MANAGE USERS</a></li>
+        <li><a href="{{ url_for('logout') }}">LOGOUT</a></li>
+    </ul>
+    <h1>MANAGE PACKAGES</h1>
+
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>PACKAGE ID</th>
+                <th>PACKAGE NAME</th>
+                <th>LOCATIONS</th>
+                <th>NO OF DAYS</th>
+                <th>AMOUNT</th>        
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(0, len) %}
+                <tr>
+                    {% if i != 0 and data[i][0] == data[i-1][0]: %}
+                        <td style="text-align: center;">{{ data[i][2] }}</td>
+                    {% else %}
+                        <td rowspan="3" style="text-align: center;">{{ data[i][0] }}</td>
+                        <td rowspan="3" style="text-align: center;">{{ data[i][1] }}</td>
+                        <td style="text-align: center;">{{ data[i][2] }}</td>
+                        <td rowspan="3" style="text-align: center;">{{ data[i][3] }}</td>
+                        <td rowspan="3" style="text-align: center;">{{ data[i][4] }}</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="registercontent" align="center">
+        <div class="registertop">
+            <form action="{{ url_for('manage_packages_add')}}" method="post" autocomplete="off">
+                <input style="float: left;height: 60px;width: 300px;border-radius: 10px 0 0 0;" type="submit" class="btn" value="ADD">
+            </form>
+            <form action="{{ url_for('manage_packages_delete')}}" method="post" autocomplete="off">    
+                <input style="float: left;height: 60px;width: 300px;border-radius: 0 10px 0 0;" type="submit" class="btn active" value="DELETE">
+            </form>
+            </div></br>
+        <div class="registerbottom">
+            <form action="{{ url_for('manage_packages_delete')}}" method="post" autocomplete="off">
+                <div class="msg">{{ msg }}</div>
+                <label for="PackageID">Select Package ID:</label>
+                <select class="textbox" id="PackageID" name="PackageID">
+                    {% for loc in data2 %}
+                    <option value={{ loc[0] }}>{{ loc[0] }}</option>
+                    {% endfor %}
+                </select><br><br>
+                <input type="submit" class="btn" value="DELETE PACKAGE">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
