@@ -9,8 +9,8 @@ app = Flask(__name__)
 app.secret_key = '22154'
 
 app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'Zaid'
-app.config['MYSQL_PASSWORD'] = '22155'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'Amna2003@'
 app.config['MYSQL_DB'] = 'tourism'
 
 mysql = MySQL(app)
@@ -32,7 +32,7 @@ def packages():
         sub.append(i[0])
         sub.append(i[1])
         cursor2 = mysql.connection.cursor()
-        cursor2.execute(f"SELECT location_name FROM view_packages2 where package_id={i[0]}")
+        cursor2.execute(f"SELECT location_name FROM view_packages where package_id={i[0]}")
         result2 = cursor2.fetchall()
         loc = []
         for j in result2:
@@ -80,7 +80,7 @@ def userpackages():
         sub.append(i[0])
         sub.append(i[1])
         cursor2 = mysql.connection.cursor()
-        cursor2.execute(f"SELECT location_name FROM view_packages2 where package_id={i[0]}")
+        cursor2.execute(f"SELECT location_name FROM view_packages where package_id={i[0]}")
         result2 = cursor2.fetchall()
         loc = []
         for j in result2:
@@ -238,7 +238,7 @@ def manage_packages_add():
         return redirect(url_for('manage_packages_add'))
 
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT * FROM view_packages2')
+    cursor.execute('SELECT * FROM view_packages')
     result = cursor.fetchall()
 
     cursor.execute('SELECT location_id FROM locations')
@@ -262,7 +262,7 @@ def manage_packages_delete():
         return redirect(url_for('manage_packages_delete'))
 
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT * FROM view_packages2')
+    cursor.execute('SELECT * FROM view_packages')
     result = cursor.fetchall()
 
     cursor.execute('SELECT package_id FROM packages')
