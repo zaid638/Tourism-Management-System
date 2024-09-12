@@ -10,7 +10,7 @@ Tourism Management System is a web-based application designed to manage and stre
 ## Project Report Contents
 <br />
 
-You can see full content of report [here](Report.pdf).
+You can see full overview of report [here](/Report.pdf).
 <br />
 
 1. Introduction
