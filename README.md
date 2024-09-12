@@ -4,37 +4,43 @@
 Tourism Management System is a web-based application designed to manage and streamline tourism activities efficiently. This system offers a comprehensive platform for users and administrators. The primary goal is to automate and simplify the management of tour bookings, user registrations, and tour package creation, thereby enhancing the overall user experience. 
 <br /><br />
 
-## [Project Report](/Report.pdf)
+![Home Page](pics/1.png)
 <br /><br />
 
-* Introduntion
-  - Source of the Project
-  - Problem Statement
-  - Objectives
+## Project Report Contents
 <br />
 
-* Requirement Formulation and Analysis
-  - Requirements
-  - System Features
-  - Fact-Finding Techniques
+You can see full content of report [here](Report.pdf).
 <br />
 
-* Conceptual Design
-  - ER diagram
-  - Table Deatils
-  - Normalisation
+1. Introduction
+  * Source of the Project
+  * Problem Statement
+  * Objectives
 <br />
 
-* Implementation
-  - Database Schema
-  - DDL Scripts
-  - Tools Used
-  - Project Snapshots
+2. Requirement Formulation and Analysis
+  * Requirements
+  * System Features
+  * Fact-Finding Techniques
 <br />
 
-* Security
-  - Authentication and Authorization
-  - Role-Based Access Control
-  - Input Validation
-  - Regular Backups
+3. Conceptual Design
+  * ER diagram
+  * Table Deatils
+  * Normalisation
+<br />
+
+4. Implementation
+  * Database Schema
+  * DDL Scripts
+  * Tools Used
+  * Project Snapshots
+<br />
+
+5. Security
+  * Authentication and Authorization
+  * Role-Based Access Control
+  * Input Validation
+  * Regular Backups
 <br /><br />
